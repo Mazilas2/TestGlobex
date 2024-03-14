@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3. Backend</title>
+</head>
+
+<body>
+    <h1>List of Employees</h1>
+    <ul>
+        <%
+            for (elem in collaborators)
+            {
+                %>
+                <li><%= elem.fullname %></li>
+                <%
+            }
+        %>
+    </ul>
+</body>
+
+</html>
