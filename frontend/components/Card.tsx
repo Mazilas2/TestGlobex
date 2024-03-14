@@ -1,16 +1,8 @@
 'use client'
 import React from 'react'
+import { UserData } from '@/services/FormatData';
 
-interface CardProps {
-  name: string
-  phone: string
-  email: string
-  date: string
-  position: string
-  department: string
-}
-
-export default function Card(CardProps: CardProps) {
+export default function Card(CardProps: UserData) {
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
   const toggleModal = () => {
@@ -39,8 +31,14 @@ export default function Card(CardProps: CardProps) {
         </div>
       </button>
       {isModalOpen && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-10">
-          <div className="flex flex-col bg-white w-[500px] h-[468px] rounded-2xl gap-y-10 p-6 shadow-custom">
+        <div
+          className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-10"
+          onClick={toggleModal}
+        >
+          <div
+            className="flex flex-col bg-white w-[500px] min-h-[468px] rounded-2xl gap-y-10 p-6 shadow-custom"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className='flex justify-between items-center h-[30px]'>
               <h2 className='text-2xl font-bold text-left text-[#262C40]'>
                 {CardProps.name}
@@ -63,11 +61,11 @@ export default function Card(CardProps: CardProps) {
                 </tr>
                 <tr>
                   <td>Дата приема</td>
-                  <td>{CardProps.date}</td>
+                  <td>{CardProps.hire_date}</td>
                 </tr>
                 <tr>
                   <td>Должность</td>
-                  <td>{CardProps.position}</td>
+                  <td>{CardProps.position_name}</td>
                 </tr>
                 <tr>
                   <td>Подразделение</td>
